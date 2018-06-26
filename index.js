@@ -4,7 +4,14 @@ const Y_MAX = 400;
 
 const rand = (high, low) =>  Math.random() * (high - low) + low;
 
-const team = point => point.x > point.y ? 1 : -1;
+const randomWeights = ({
+    x: rand(-1, 1),
+    y: rand(-1, 1)
+});
+
+const guest = (weights, point) => {
+    point.x > point.y ? 1 : -1;
+}
 
 let randomPoints = R.range(0, 10).map(_ => ({
     x: rand(0, X_MAX),
@@ -21,7 +28,7 @@ const html = `
                 cx="${point.x}"
                 cy="${point.y}"
                 r="3"
-                fill="${team(point) === -1 ? 'blue' : 'red'}"/>
+                fill="${guest(point) === -1 ? 'blue' : 'red'}"/>
         `
     )}
     <line x1="0" x2="${X_MAX}" y1="0" y2="${Y_MAX}" stroke="purple"/>
